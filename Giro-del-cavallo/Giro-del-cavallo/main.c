@@ -19,9 +19,16 @@
  * centrali, dove per ironia della sorte, abbiamo il grado di accessibilità più alto, 8.
  * Allora mi sono ingegnato, e ho pensato che mettendo tre valori differenti di grado di accessibilità, che non sono i veri, potevo ingannare 
  * 
- * Nicolò Rossi, 15/12/2013
+ * Nicolò Rossi, 17/12/2013
  * 
- * V. 3.0.1.2 test dei 9 e 10
+ * Attenzione: non so se il programma sia compatibile con tutti i sistemi linux, detto ciò assicuro che NON c'è compatibilità tra questo software e 
+ * Windows.
+ * 
+ * 
+ * *********** 70% di probabilità di successo! ***********
+ * 
+ * *********** Media basata su 10 risultati: 63 mosse. ***********
+ * 
  * 
  * 
  *
@@ -150,7 +157,7 @@ int mossa_cavallo (int scacchiera [8] [8]){ //funzione addetta a far muovere il 
 	printf("Non posso accedere a nessuna casella! Ciclo terminato!\n");
 	
 	
-	printf("Ho completato %d passaggi",i);
+	printf("Ho completato %d passaggi\n\n",i);
 			
 	
 	return scacchiera [8] [8];
