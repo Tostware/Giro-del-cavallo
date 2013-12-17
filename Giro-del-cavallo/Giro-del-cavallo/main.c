@@ -3,19 +3,28 @@
  * Il seguente codice rappresenta la soluzione al problema proposto da Eulero del cavallo e della scacchiera:
  * riesce un cavallo a percorrere tutta la scacchiera senza tornare mai sui suoi passi facendo la classica mossa a "L"?
  * 
- * Il problema viene così risolto: viene dichiarato un array 8x8 rappresentante la scacchiera. 
- * Vengono assegnati valori alle caselle in base al grado di accessibilità. Il grado di accessibilità è la quantità di caselle
- * dalle quali si può accedere a una determinata casella. Il programma valuterà quale delle caselle a cui può accedere è quella 
- * con il grado più basso, e andrà lì. Così facendo il programma ha più possibilità di terminare le 64 mosse.
+ * Il problema presentato da Eulero va risolto con una tattica speciale, infatti provando su una scacchiera reale a completare il giro del cavallo
+ * possiamo notare che le caselle che prima possiamo occupare sono quelle centrali, mentre man mano che ci si avvicina ai bordi, e ancor di più
+ * agli angoli, risulta più difficile accedervi.
+ * Una tattica è chiaramente quella di entrare nelle caselle marginali della scacchiera appena possibile, così quando la scacchiera sarà congestionata
+ * potremmo andare in quelle più facili da raggiungere. In questo modo il problema ha una buona probabilità di essere quasi risolto. 
+ * Quindi, numerando le caselle dell'array rappresentante la scacchiera con il grado di accessibilità, ovvero il numero di caselle alle quali si 
+ * può accedere se ci si trova su una determinata casella, possiamo sviluppare un algoritmo che è in grado di valutare quale casella, tra quelle
+ * accessibili, abbia il grado di accessibilità più basso. Così il programma muoverà il cavallo in quella casella, che verrà marchiata con il valore
+ * 1, il numero che contraddistingue le caselle visitate da quelle ancora da visitare. 
  * 
- * Nicolò Rossi, 14/12/2013
  * 
- * V. 3.0.1.1 test dei 9
+ * Ma ci vuole una tattica aggiuntiva, da applicare a quella sopra citata per avere più possibilità di conquistare tutte le 64 caselle:
+ * il programma ha ancora solo il 30% di completare il giro del cavallo, perchè le caselle che rimangono escluse sono solitamente quelle 
+ * centrali, dove per ironia della sorte, abbiamo il grado di accessibilità più alto, 8.
+ * Allora mi sono ingegnato, e ho pensato che mettendo tre valori differenti di grado di accessibilità, che non sono i veri, potevo ingannare 
  * 
- * NOTE: il programma il più delle volte non completa le 64 mosse, ma può comunque succedere che il programma ce la faccia. 
- * Infatti il programma applica la teoria euristica dell'accessibilità, non un metodo di soluzione universale, che sarebbe impossibile, 
- * perchè a ogni lancio del programma, il cavallo si trova in una casella diversa, e sviluppare per 64 diverse possibilità il tracciato per 
- * arrivare alla vittoria, sarebbe inumano.
+ * Nicolò Rossi, 15/12/2013
+ * 
+ * V. 3.0.1.2 test dei 9 e 10
+ * 
+ * 
+ *
  * */
 
 #include <stdio.h>
@@ -66,9 +75,9 @@ int board_wr (int scacchiera [8] [8]){ //funzione che scrive sulla scacchiera
 	scacchiera [1] [7]=3;
 	scacchiera [0] [6]=3;
 	
-	for ( j=2 ; j<=5; j++){ /*scrittura degli 8*/
+	for ( j=2 ; j<=5; j++){ /*scrittura dei 9*/
 		for ( i=2 ; i<=5; i++){
-			scacchiera [i] [j]=8;
+			scacchiera [i] [j]=9;
 		}
 	}
 	
@@ -91,13 +100,19 @@ int board_wr (int scacchiera [8] [8]){ //funzione che scrive sulla scacchiera
 	scacchiera [4] [1]=6;
 	scacchiera [3] [1]=6;
 	
-	//test dei 9 nei 4 nel centro
+	//test dei 10 nei 4 nel centro
 	
-	scacchiera [3] [3]=9;
-	scacchiera [3] [4]=9;
-	scacchiera [4] [3]=9;
-	scacchiera [4] [4]=9;
+	scacchiera [3] [3]=10;
+	scacchiera [3] [4]=10;
+	scacchiera [4] [3]=10;
+	scacchiera [4] [4]=10;
 
+	//8 agli angoli
+	
+	scacchiera [5] [5]=8;
+	scacchiera [2] [5]=8;
+	scacchiera [5] [2]=8;
+	scacchiera [2] [2]=8;
 	return scacchiera [8] [8];
 }
 
@@ -129,7 +144,7 @@ int mossa_cavallo (int scacchiera [8] [8]){ //funzione addetta a far muovere il 
 }	
 
 	if (i==64){
-		printf("Caselle completate! Giro del cavallo risolto!n");
+		printf("Caselle completate! Giro del cavallo risolto!\n");
 	}
 	else 
 	printf("Non posso accedere a nessuna casella! Ciclo terminato!\n");
