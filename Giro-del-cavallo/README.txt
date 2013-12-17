@@ -33,7 +33,7 @@
  * 
  * *********** Media basata su 10 risultati: 63 mosse. ***********
  * 
- * 
+ * V. 3.1
  * 
  *
  * */
@@ -47,7 +47,7 @@ Requisiti indispensabile: GCC
 Per prima cosa spostiamoci nella cartella contenente il file sorgente del mio programma. 
 Fatto ciò, aprite il terminale e digitate:
 
-gcc -Wall main.c -o giro-del-cavallo
+gcc -Wall Giro-del-cavallo.c -o giro-del-cavallo
 
 Attenzione: non cambiare nome alla source prima di questa fase.
 Fatto questo, per eseguirlo basta digitare: 
