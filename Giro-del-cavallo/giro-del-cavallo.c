@@ -21,14 +21,7 @@
  * 
  * Nicolò Rossi, 17/12/2013
  * 
- * Attenzione: non so se il programma sia compatibile con tutti i sistemi linux, detto ciò assicuro che NON c'è compatibilità tra questo software e 
- * Windows.
- * 
- * 
- * *********** 70% di probabilità di successo! ***********
- * 
- * *********** Media basata su 10 risultati: 63 mosse. ***********
- * 
+ * V. 3.1 
  * 
  * 
  *
@@ -125,7 +118,7 @@ int board_wr (int scacchiera [8] [8]){ //funzione che scrive sulla scacchiera
 
 int mossa_cavallo (int scacchiera [8] [8]){ //funzione addetta a far muovere il cavallo
 	
-	int i;
+	int i=0;
 	int pos1, pos2;
 	
 	
@@ -157,7 +150,7 @@ int mossa_cavallo (int scacchiera [8] [8]){ //funzione addetta a far muovere il 
 	printf("Non posso accedere a nessuna casella! Ciclo terminato!\n");
 	
 	
-	printf("Ho completato %d passaggi\n\n",i);
+	printf("Ho completato %d passaggi",i);
 			
 	
 	return scacchiera [8] [8];
@@ -228,6 +221,9 @@ int chooser (int pos1, int pos2, int board [8] [8]){
 	
 	
 }
+
+
+
 
 
 
