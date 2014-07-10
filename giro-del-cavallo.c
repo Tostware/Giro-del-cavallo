@@ -18,7 +18,7 @@
  *
  *
  *
- *          V 3.2.0                       10/07/2014
+ *          V 3.2.1                    10/07/2014
  * */
 
 #include <stdio.h>
@@ -50,6 +50,7 @@ int main (void){
                 printf("\n\n\nDimmi la riga  \n");      
                 scanf("%d",& i);
                     if(i>7){ //valutazione dell'input....
+                    printf("\a");
                         printf("Hai immesso un valore inesistente. Uscita...\n");
                         break;
                     }
@@ -57,6 +58,7 @@ int main (void){
                 printf("\n\n\nDimmi la colonna\n");
                 scanf("%d",& y);
                     if(y>7){ //valutazione dell'input....
+                                printf("\a");
                                 printf("Hai immesso un valore inesistente. Uscita...\n");
                                 break;
                     }
@@ -72,6 +74,7 @@ int main (void){
                 break;
            
            default:     
+                printf("\a");
                 printf("ERRORE! Hai scelto un valore non valido! Uscita...\n");
                 
     }
