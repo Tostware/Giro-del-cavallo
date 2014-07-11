@@ -42,12 +42,12 @@ int main (void){
     
     board_wr (board); //chiamata alla funzione che azzera la scacchiera
     
-    printf("1. Immetti le coordinate di una casella (riga, INVIO, colonna). \nLa casella 0,0 e quella in alto a sinistra.\n\n2. Testa il programma con una casella random generata dal pc\n\n\n");
+    printf("1. Immetti le coordinate di una casella (riga, INVIO, colonna). \nLa casella 0,0 e quella in alto a sinistra.\n\n\n2. Testa il programma con una casella random generata dal pc\n\n\n");
     scanf("%d", &choose);
     
     switch (choose){
            case 1:
-                printf("\n\n\nDimmi la riga  \n");      
+                printf("ATTENZIONE! I valori validi sono [0;7] estremi inclusi!\n\n\n\nDimmi la riga  \n");      
                 scanf("%d",& i);
                     if(i>7){ //valutazione dell'input....
                     printf("\a");
